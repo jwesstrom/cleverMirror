@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # makes degree symbol possible
+#githubTest
 
 import urllib2
 
