@@ -2,52 +2,69 @@
 
 
     canvas:
+
+
         Color:
             rgb: 1, 1, 1
         Ellipse:
             pos: root.width - 700, root.height - 150
-            size: 100, 100
+            size: 50, 50
             angle_start: 0
-            angle_end: root.seconds * 0.36
+            angle_end: root.minute
         Color:
             rgb: 0, 0, 0
         Ellipse:
             pos: root.width - 695, root.height - 145
-            size: 90, 90
+            size: 30, 30
+        # Color:
+        #     rgb: 1, 1, 1
+        # Ellipse:
+        #     pos: root.width - 700, root.height - 150
+        #     size: 20, 20
+        #     angle_start: 0
+        #     angle_end: root.secondsAnim
+        # # Color:
+        #     rgb: 0, 0, 0
+        # Ellipse:
+        #     pos: root.width - 695, root.height - 145
+        #     size: 90, 90
 
-    # Label:
-    #     font_size: 70
-    #     center_x: root.width / 2
-    #     top: root.top - 50
-    #     text: root.seconds
 
-    # Label:
-    #     font_size: 70
-    #     center_x: root.width / 2
-    #     top: root.top - 50
-    #     text: root.time
+
+
     Label:
-        font_size: 70
+        font_size: 20
         center_x: root.width / 2
-        top: root.top - 170
+        top: root.top - 150
+        text: root.seconds
+
+    Label:
+        font_size: 20
+        center_x: root.width / 2
+        top: root.top - 20
+        text: root.time
+    Label:
+        font_size: 20
+        center_x: root.width / 2
+        top: root.top - 40
         text: root.day
+    Label:
+        font_size: 20
+        center_x: root.width / 2
+        top: root.top - 60
+        text: root.date
     # Label:
-    #     font_size: 70
+    #     font_size: 20
     #     center_x: root.width / 2
-    #     top: root.top - 270
-    #     text: root.date
-    # Label:
-    #     font_size: 70
-    #     center_x: root.width / 2
-    #     top: root.top - 370
+    #     top: root.top - 80
     #     text: root.weather1
     # Label:
-    #     font_size: 70
+    #     font_size: 20
     #     center_x: root.width / 2
-    #     top: root.top - 470
+    #     top: root.top - 100
     #     text: root.weather2
     # Label:
-    #     font_size: 70
+    #     font_size: 20
     #     center_x: root.width / 2
-    #     top: root.top - 570
+    #     top: root.top - 120
     #     text: root.weather3
