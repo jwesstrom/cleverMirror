@@ -4,22 +4,22 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 <layout version="1.0">
     <window x="0" y="0" w="2560" h="1080" fullscreen="1" screen="0">
         <splitter orientation="1">
-            <split size="1619"/>
+            <split size="1757"/>
             <splitter orientation="2">
                 <split size="1057"/>
-                <dock id="" activePageId="Viewer.1">
+                <dock id="" activePageId="Viewer.1" focus="true">
                     <page id="uk.co.thefoundry.scripteditor.1"/>
                     <page id="Viewer.1"/>
                 </dock>
             </splitter>
-            <split size="937"/>
+            <split size="799"/>
             <splitter orientation="2">
                 <split size="527"/>
                 <dock id="" hideTitles="1" activePageId="Properties.1">
                     <page id="Properties.1"/>
                 </dock>
                 <split size="526"/>
-                <dock id="" activePageId="DAG.1" focus="true">
+                <dock id="" activePageId="DAG.1">
                     <page id="DAG.1"/>
                     <page id="Curve Editor.1"/>
                     <page id="DopeSheet.1"/>
@@ -32,7 +32,7 @@ define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
 Root {
  inputs 0
  name C:/Users/jwess/OneDrive/Dokument/GitHub/cleverMirror/testFiles/lookdev.nk
- frame 63
+ frame 103
  last_frame 200
  fps 25
  format "1920 1080 0 0 1920 1080 1 HD_1080"
@@ -230,7 +230,7 @@ Group {
   xpos 313
   ypos -516
  }
-set N552a2400 [stack 0]
+set N30d92400 [stack 0]
  Transform {
   scale 3
   center {{width/2} {height/2}}
@@ -238,7 +238,7 @@ set N552a2400 [stack 0]
   xpos 215
   ypos -371
  }
-set N552a2000 [stack 0]
+set N30d92000 [stack 0]
  Shuffle {
   red black
   green black
@@ -251,7 +251,7 @@ set N552a2000 [stack 0]
  Dot {
   name Dot4
   tile_color 0xff480000
-  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
+  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
   note_font_size 20
   note_font_color 0xcccccccc
   xpos 142
@@ -259,11 +259,11 @@ set N552a2000 [stack 0]
   addUserKnob {20 User}
   addUserKnob {22 createtx l "create TX knobs" -STARTLINE T "\n\nx=nuke.thisNode()\nif not x.knob('transform_tab') :\n    x.addKnob(nuke.Tab_Knob('transform_tab','Transform'))\n    x.addKnob(nuke.XY_Knob('translate','translate'))\n    x.addKnob(nuke.Double_Knob('rotate','rotate'))\n    x.addKnob(nuke.WH_Knob('scale','scale'))\n    x.addKnob(nuke.Double_Knob('skew','skew'))\n    x.addKnob(nuke.XY_Knob('center','center'))"}
  }
-push $N552a2000
+push $N30d92000
  Dot {
   name Dot3
   tile_color 0xff480000
-  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
+  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
   note_font_size 20
   note_font_color 0xcccccccc
   xpos 242
@@ -271,7 +271,7 @@ push $N552a2000
   addUserKnob {20 User}
   addUserKnob {22 createtx l "create TX knobs" -STARTLINE T "\n\nx=nuke.thisNode()\nif not x.knob('transform_tab') :\n    x.addKnob(nuke.Tab_Knob('transform_tab','Transform'))\n    x.addKnob(nuke.XY_Knob('translate','translate'))\n    x.addKnob(nuke.Double_Knob('rotate','rotate'))\n    x.addKnob(nuke.WH_Knob('scale','scale'))\n    x.addKnob(nuke.Double_Knob('skew','skew'))\n    x.addKnob(nuke.XY_Knob('center','center'))"}
  }
-push $N552a2400
+push $N30d92400
  Transform {
   translate {{width/2} 0}
   center {{width/2} {height/2}}
@@ -282,7 +282,7 @@ push $N552a2400
  Dot {
   name Dot1
   tile_color 0xff480000
-  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
+  note_font "Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic Bold Italic"
   note_font_size 20
   note_font_color 0xcccccccc
   xpos 542
@@ -290,7 +290,7 @@ push $N552a2400
   addUserKnob {20 User}
   addUserKnob {22 createtx l "create TX knobs" -STARTLINE T "\n\nx=nuke.thisNode()\nif not x.knob('transform_tab') :\n    x.addKnob(nuke.Tab_Knob('transform_tab','Transform'))\n    x.addKnob(nuke.XY_Knob('translate','translate'))\n    x.addKnob(nuke.Double_Knob('rotate','rotate'))\n    x.addKnob(nuke.WH_Knob('scale','scale'))\n    x.addKnob(nuke.Double_Knob('skew','skew'))\n    x.addKnob(nuke.XY_Knob('center','center'))"}
  }
-push $N552a2400
+push $N30d92400
  Transform {
   translate {0 {height/2}}
   rotate {{(pangle/2)%180}}
@@ -301,23 +301,23 @@ push $N552a2400
   xpos 313
   ypos -287
  }
-set N552f8c00 [stack 0]
+set N30de8c00 [stack 0]
  Mirror {
   Vertical true
   name Mirror1
   xpos 430
   ypos -287
  }
-set N552f8800 [stack 0]
-push $N552f8c00
+set N30de8800 [stack 0]
+push $N30de8c00
  Merge2 {
   inputs 2
   name Merge3
   xpos 430
   ypos -227
  }
-push $N552f8800
-push $N552f8c00
+push $N30de8800
+push $N30de8c00
  Merge2 {
   inputs 2
   operation mask
@@ -372,7 +372,7 @@ push $N552f8c00
   xpos 313
   ypos 145
  }
-push $N552f8c00
+push $N30de8c00
  Viewer {
   frame_range 1-100
   fps 25
@@ -437,7 +437,7 @@ Group {
   addUserKnob {6 useaspect l "use pixel aspect" +STARTLINE}
   useaspect true
  }
-set N5536b400 [stack 0]
+set N30e5b400 [stack 0]
  Transform {
   scale {{1-pthickness}}
   center {{Radial2.shift} {Radial2.shift}}
@@ -446,7 +446,7 @@ set N5536b400 [stack 0]
   xpos 312
   ypos -184
  }
-push $N5536b400
+push $N30e5b400
  Merge2 {
   inputs 2
   operation stencil
@@ -466,7 +466,7 @@ push $N5536b400
   xpos 245
   ypos -22
  }
-push $N5536b400
+push $N30e5b400
  Viewer {
   frame_range 1-100
   fps 25
@@ -492,7 +492,7 @@ Reformat {
  xpos -1262
  ypos -1939
 }
-set N553c9c00 [stack 0]
+set Nec427800 [stack 0]
 Noise {
  size 500
  zoffset {{parent.Noise5.zoffset}}
@@ -510,7 +510,7 @@ Blur {
  xpos -1099
  ypos -1519
 }
-push $N553c9c00
+push $Nec427800
 Noise {
  size 56
  zoffset {{frame/300}}
@@ -531,7 +531,7 @@ Ramp {
  xpos -1538
  ypos -1826
 }
-push $N553c9c00
+push $Nec427800
 Radial {
  area {158 159.6090918 900 608.3909082}
  softness 0
@@ -596,7 +596,7 @@ IDistort {
  xpos -1399
  ypos -1474
 }
-set N55408400 [stack 0]
+set Nd962b000 [stack 0]
 Shuffle {
  in rgb
  out alpha
@@ -630,8 +630,8 @@ Transform {
  xpos -1399
  ypos -1308
 }
-set C5544f400 [stack 0]
-set N5544f400 [stack 0]
+set Cd333d800 [stack 0]
+set Nd333d800 [stack 0]
 TimeOffset {
  time_offset 150
  time ""
@@ -639,12 +639,12 @@ TimeOffset {
  xpos -1233
  ypos -1308
 }
-clone $C5544f400 {
+clone $Cd333d800 {
  xpos -1233
  ypos -1282
  selected false
 }
-set N5544f000 [stack 0]
+set Ndc490800 [stack 0]
 TimeOffset {
  time_offset 150
  time ""
@@ -652,12 +652,12 @@ TimeOffset {
  xpos -1233
  ypos -1170
 }
-clone $C5544f400 {
+clone $Cd333d800 {
  xpos -1233
  ypos -1144
  selected false
 }
-set N5544ec00 [stack 0]
+set Nc7c0b800 [stack 0]
 TimeOffset {
  time_offset 150
  time ""
@@ -665,12 +665,12 @@ TimeOffset {
  xpos -1233
  ypos -1075
 }
-clone $C5544f400 {
+clone $Cd333d800 {
  xpos -1233
  ypos -1049
  selected false
 }
-set N5544e800 [stack 0]
+set N4139c00 [stack 0]
 TimeOffset {
  time_offset 150
  time ""
@@ -678,15 +678,15 @@ TimeOffset {
  xpos -1233
  ypos -988
 }
-clone $C5544f400 {
+clone $Cd333d800 {
  xpos -1233
  ypos -962
  selected false
 }
-push $N5544e800
-push $N5544ec00
-push $N5544f000
-push $N5544f400
+push $N4139c00
+push $Nc7c0b800
+push $Ndc490800
+push $Nd333d800
 Merge2 {
  inputs 2
  name Merge17
@@ -711,14 +711,14 @@ Merge2 {
  xpos -1399
  ypos -962
 }
-set N554b1400 [stack 0]
+set N51e84400 [stack 0]
 Blur {
  size 22.2
  name Blur12
- xpos -82
+ xpos -80
  ypos -579
 }
-push $N55408400
+push $Nd962b000
 Shuffle {
  in rgb
  out alpha
@@ -726,7 +726,7 @@ Shuffle {
  xpos 100
  ypos -991
 }
-set N554b0c00 [stack 0]
+set N73305c00 [stack 0]
 Clamp {
  name Clamp1
  xpos 100
@@ -738,7 +738,7 @@ Blur {
  xpos 100
  ypos -927
 }
-set N554b0400 [stack 0]
+set N72aea800 [stack 0]
 Radial {
  inputs 0
  area {0 0 300 300}
@@ -748,7 +748,7 @@ Radial {
  ypos -963
 }
 Transform {
- translate {{curve x1 542 x200 40} {curve x1 518 x200 372}}
+ translate {542 518}
  scale 1.5
  center {150 150}
  name Transform3
@@ -761,7 +761,7 @@ Grade {
  xpos 1112
  ypos -911
 }
-push $N554b0400
+push $N72aea800
 Remove {
  name Remove1
  xpos 914
@@ -773,7 +773,7 @@ Merge2 {
  xpos 914
  ypos -911
 }
-set N554f5000 [stack 0]
+set N71eb7800 [stack 0]
 Grade {
  white 102
  name Grade5
@@ -806,7 +806,7 @@ Clamp {
  xpos 914
  ypos -594
 }
-push $N554b1400
+push $N51e84400
 Invert {
  name Invert2
  xpos 482
@@ -815,12 +815,12 @@ Invert {
 Blur {
  size 45
  name Blur11
- xpos 458
+ xpos 482
  ypos -754
 }
-set N55549400 [stack 0]
-push $N55549400
-push $N554b0400
+set N4805800 [stack 0]
+push $N4805800
+push $N72aea800
 Blur {
  size 98
  name Blur14
@@ -854,7 +854,7 @@ Merge2 {
  xpos 331
  ypos -748
 }
-push $N554b0400
+push $N72aea800
 Grade {
  white 0.17
  unpremult rgba.alpha
@@ -886,14 +886,13 @@ Merge2 {
  xpos 100
  ypos -588
 }
-push $N554f5000
+push $N71eb7800
 Merge2 {
  inputs 2
  name Merge8
  xpos 110
  ypos -540
 }
-set N5558ec00 [stack 0]
 Grade {
  white 1.69
  gamma 0.825
@@ -974,7 +973,7 @@ Text2 {
  xpos 110
  ypos -343
 }
-set N555e0c00 [stack 0]
+set N780bb400 [stack 0]
 Transform {
  translate {358 -100}
  scale 0.8
@@ -983,7 +982,7 @@ Transform {
  xpos 417
  ypos -427
 }
-set N555e0400 [stack 0]
+set N99465c00 [stack 0]
 Blur {
  size 200
  name Blur2
@@ -1004,7 +1003,7 @@ Grade {
  xpos 508
  ypos -186
 }
-push $N555e0400
+push $N99465c00
 Blur {
  size 100
  name Blur1
@@ -1017,7 +1016,7 @@ Grade {
  xpos 417
  ypos -303
 }
-push $N555e0c00
+push $N780bb400
 Merge2 {
  inputs 2
  operation under
@@ -1082,7 +1081,7 @@ Card3D {
  xpos -181
  ypos -272
 }
-set N55674800 [stack 0]
+set N51bbd400 [stack 0]
 Read {
  inputs 0
  file C:/Users/jwess/OneDrive/Dokument/GitHub/cleverMirror/testFiles/berke-oversized-floor-mirror-o.jpg
@@ -1098,7 +1097,7 @@ Grade {
  xpos -294
  ypos -382
 }
-set N55674000 [stack 0]
+set Nad1b3800 [stack 0]
 Merge2 {
  inputs 2
  operation plus
@@ -1106,19 +1105,19 @@ Merge2 {
  xpos -351
  ypos -243
 }
-push $N55674800
-push $N55674000
+push $N73305c00
+push $N51bbd400
+push $Nad1b3800
 Merge2 {
  inputs 2
  name Merge4
+ selected true
  xpos -278
  ypos -184
 }
-push $N554b0c00
-push $N5558ec00
 Viewer {
  inputs 2
- frame 63
+ frame 103
  frame_range 1-200
  fps 25
  colour_sample_bbox {0.7919999957 -0.05999999866 0.7940000296 -0.05799999833}

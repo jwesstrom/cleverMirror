@@ -8,6 +8,8 @@ from kivy.properties import StringProperty, NumericProperty
 from webScrape import webScraper
 
 
+
+
 class MirrorWindow(Widget):
     dayPrint = ['Sön', 'Mån', 'Tis', 'Ons', 'Tors', 'Fre', 'Lör']
     secondsAnim = NumericProperty(0)
