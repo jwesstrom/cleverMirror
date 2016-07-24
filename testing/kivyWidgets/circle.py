@@ -25,3 +25,11 @@ class Circle(Widget):
     sizeWH = NumericProperty(0)
     angleS = NumericProperty(0)
     angleE = NumericProperty(0)
+    maxAngle = NumericProperty(360)
+    minAngle = NumericProperty(0)
+    cId = StringProperty('')
+
+    if angleE < maxAngle:
+        angleE = angleE
+    else:
+        angleE = angleE - maxAngle

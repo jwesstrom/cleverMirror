@@ -6,7 +6,7 @@ import random
 from kivy.clock import Clock
 from kivy.properties import StringProperty, NumericProperty
 
-class GfxWindow(Widget):
+class GfxWorkingLegacy(Widget):
     testStuff = NumericProperty(0)
     def update(self, dt):
         self.testStuff = self.testStuff + 2
@@ -14,7 +14,7 @@ class GfxWindow(Widget):
 
 class GfxApp(App):
     def build(self):
-        gfxWindow = GfxWindow()
+        gfxWindow = GfxWorkingLegacy()
         Clock.schedule_interval(gfxWindow.update, 0.1)
         return gfxWindow
 
