@@ -24,6 +24,8 @@ class RootWidget(Widget):
         for i in self.children:
             print i.ids
 
+        print self.children.ids.asd
+
 
 class MainApp(App):
 
