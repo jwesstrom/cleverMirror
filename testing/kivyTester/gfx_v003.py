@@ -5,13 +5,6 @@ from kivy.graphics import Color, Ellipse
 from kivy.uix.button import Button
 from kivy.uix.label import Label
 
-# class dataVariables(object):
-#     def __init__(self):
-#         self.subwayA = 60.0
-#     def update(self, dt):
-#         self.subwayA = self.subwayA - 1
-#         print self.subwayA
-
 class dataVariables(Widget):
     def __init__(self):
         self.subwayA = 15.0
@@ -19,11 +12,11 @@ class dataVariables(Widget):
         self.subwayA = self.subwayA - 1
         #print self.subwayA
 
-class GfxWindow(Widget):
+class timerWidget(Widget):
     def __init__(self, timeleft, **kwargs):
         # make sure we aren't overriding any important functionality
-        super(GfxWindow, self).__init__(**kwargs)
-        self.timer = timeleft
+        super(timerWidget, self).__init__(**kwargs)
+        self.timeleft = timeleft
         self.groupList = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
         self.angleCounter = 0.0
         self.pieSlices = 5.0
@@ -60,14 +53,14 @@ class GfxWindow(Widget):
     def update(self, dt):
         # print 'count' + str(self.angleCounter)
         # print 'check' + str(self.currentPieSlice)
-        print 360.0 / 60.0 * self.timer
+        print 360.0 / 60.0 * self.timeleft
 
         if self.currentPieSlice > self.pieSlices:
             self.resetCanvas()
         elif self.angleCounter == 0:
             self.resetCanvas()
         else:
-            self.angleCounter = self.angleCounter + (self.timer)
+            self.angleCounter = self.angleCounter + 1
         currentGroup = self.groupList[int(self.currentPieSlice)]
         for i in self.canvas.get_group(currentGroup):
             if 'Ellipse' in str(type(i)):
@@ -85,8 +78,8 @@ class GfxWindow(Widget):
             Ellipse(pos=(360, 360), size=(180, 180), group='qz', angle_start=0, angle_end=360)
 
     def updateTimer(self, timeleft, dt):
-        self.timer = timeleft
-        print 'bajsbajsbajsbajs ' + str(self.timer)
+        self.timeleft = timeleft
+        print 'bajsbajsbajsbajs ' + str(self.timeleft)
 
 
 class clockText(Widget):
@@ -105,7 +98,7 @@ class windowWidget(Widget):
         super(windowWidget, self).__init__(**kwargs)
         self.timeleft = timeleft
 
-        self.add_widget(GfxWindow(self.timeleft.subwayA))
+        self.add_widget(timerWidget(self.timeleft.subwayA))
         self.add_widget(clockText(self.timeleft.subwayA))
 
 
@@ -122,7 +115,8 @@ class windowWidget(Widget):
     def updateTimers(self, dt):
         for i in self.children:
             if i.id == 'counter':
-                i.updateTimer(self.timeleft.subwayA,dt)
+                i.update
+                (self.timeleft.subwayA,dt)
 
 
 
@@ -130,7 +124,7 @@ class windowWidget(Widget):
 
 class GfxApp(App):
     def build(self):
-        # gWindow = GfxWindow()
+        # gWindow = timerWidget()
         # Clock.schedule_interval(gWindow.update, 0.001)
         # clockText()
         # return gWindow
