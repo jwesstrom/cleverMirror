@@ -1,3 +1,8 @@
+#add Clock.schedule_interval(self.update, 1/60) to the widgets themselves
+#comment everything
+
+
+
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
@@ -90,28 +95,16 @@ class timerWidget(Widget):
             Ellipse(pos=(350, 350), size=(200, 200), group=self.groupList[int(self.currentPieSlice)], angle_start=self.angleCounter, angle_end=self.angleCounter)
 
     def update(self, dt):
-        # print 'count' + str(self.angleCounter)
-        # print 'check' + str(self.currentPieSlice)
-        #print 360.0 / 60.0 * self.timeleft
-        #360/self.timeleft[1]*60
-        #self.timeleft[0] = self.timeleft[0] + 1/60
-
         self.timeleft[0] = (self.timeleft[0]) + (360/self.timeleft[1]/60)
-
         if self.currentPieSlice > self.pieSlices:
             self.resetCanvas()
         elif self.angleCounter == 0:
             self.resetCanvas()
         else:
-            #self.angleCounter = self.angleCounter + 1
-            #self.angleCounter = 360/self.timeleft[1]*self.timeleft[0]
             self.angleCounter = self.timeleft[0]
-            #print self.angleCounter
         currentGroup = self.groupList[int(self.currentPieSlice)]
         for i in self.canvas.get_group(currentGroup):
             if 'Ellipse' in str(type(i)):
-                # print currentGroup
-                # print self.canvas.get_group(currentGroup)[1]
                 angle = self.canvas.get_group(currentGroup)[1].angle_end
                 if angle < 360/self.pieSlices*self.currentPieSlice:
                     self.canvas.get_group(currentGroup)[1].angle_end = self.angleCounter
