@@ -5,6 +5,20 @@ from kivy.graphics import Color, Ellipse
 from kivy.uix.button import Button
 from kivy.animation import Animation
 from kivy.properties import (NumericProperty, BooleanProperty)
+from functools import partial
+from kivy.uix.effectwidget import EffectWidget
+from kivy.uix.effectwidget import (MonochromeEffect,
+                                   InvertEffect,
+                                   ScanlinesEffect,
+                                   ChannelMixEffect,
+                                   ScanlinesEffect,
+                                   FXAAEffect,
+                                   PixelateEffect,
+                                   HorizontalBlurEffect,
+                                   VerticalBlurEffect)
+
+
+
 
 
 
@@ -22,7 +36,7 @@ class timerWidget(Widget):
         Clock.schedule_interval(self.update, 1/25)
 
         with self.canvas:
-            Color(0.0, 1.0, 0.0)
+            Color(1.0, 1.0, 1.0)
             self.ellipse = Ellipse(pos=self.pos, size=self.size, group='a', angle_start=0, angle_end = self.angle)
 
 
@@ -63,7 +77,7 @@ class windowWidget(Widget):
             # x = self.ellipsePivot(x,y,sizeWH)[0]
             # y = self.ellipsePivot(x,y,sizeWH)[1]
             if i == 3:
-                op = 0.1
+                op = 0.0
             else:
                 op = 1.0 - (0.33*i)
             #
@@ -88,15 +102,55 @@ class windowWidget(Widget):
         for i in self.children:
             if i.angle == 360:
                 if i.timesUp == False:
-                    print 'timeup'
-                    print i.timesUp
                     i.timesUp = True
-                    print i.timesUp
                     self.outAnim(i)
-                    Clock.schedule_once(self.nextAnimCall, .2)
-                    Clock.schedule_once(self.nextAnimCall, .4)
-                    Clock.schedule_once(self.nextAnimCall, .6)
 
+                    Clock.schedule_once(partial(self.circulate, i, 0), 0.2)
+                    Clock.schedule_once(partial(self.circulate, i, 1), 0.4)
+                    Clock.schedule_once(partial(self.circulate, i, 2), 0.6)
+
+
+    def circulate(self, obj, order, *args):
+        posDict = {}
+        tempDict = {}
+        tempList = []
+        for i in self.children:
+            if i.id != obj.id:
+                tempDict = {i.pos[0]:i}
+                tempList.append(tempDict)
+        b = sorted(tempList)[order]
+        a = b.keys()[0]
+        self.nextAnim (b[a])
+
+
+
+
+
+
+    def newTimeTrigger(self, *args, **kwargs):
+        args[1].newTime = False
+
+
+    def outAnim(self, obj, *args):
+        # Animation.cancel_all(self)
+
+        anim = Animation(x=obj.pos[0]-100, t='in_back', duration=.3)
+        anim &=Animation(opacity=0.0, t='in_back', duration=.3)
+        anim.bind(on_complete=self.newTimeTrigger)
+        anim.start(obj)
+
+
+
+
+
+
+
+    def nextAnim(self, obj):
+        anim = Animation(x=obj.pos[0]-50, t='in_out_back', duration=.3)
+        anim &=Animation(opacity=obj.opacity+0.33, t='linear', duration=.3)
+        # anim &=Animation(y=obj.pos[1]+5, t='in_back', duration=.5)
+        #anim &=Animation(size=(obj.size[0]+5,obj.size[1]+5), t='in_back', duration=.5)
+        anim.start(obj)
 
 
     def newTime(self, *args):
@@ -112,59 +166,27 @@ class windowWidget(Widget):
 
 
 
+
+
+
     def timesUp(self, *args):
         pass
 
     def opTest(self, *args):
-        # for i in self.children:
-        #     if i.opacity == 0.15:
-        #         print i.id
-        #         if i.timesUp == True:
-        #             i.newTime = False
-        #             print 'bajs'
         pass
 
 
 
-    def outAnimCall(self, dt):
-        self.outAnim(self.children[self.trigger])
-        if self.trigger > 0:
-            self.trigger = self.trigger - 1
-        else:
-            self.trigger = 3
-
-    def nextAnimCall(self, *args):
-        if self.trigger > 0:
-            self.trigger = self.trigger - 1
-        else:
-            self.trigger = 3
-        self.nextAnim(self.children[self.trigger])
 
 
 
 
-    def test(self, *args, **kwargs):
-        args[1].newTime = False
 
 
-    def outAnim(self, obj, *args):
-        # Animation.cancel_all(self)
-        anim = Animation(x=obj.pos[0]-100, t='in_back', duration=.5)
-        anim &=Animation(opacity=0.15, t='in_back', duration=.5)
-        anim.bind(on_complete=self.test)
-        anim.start(obj)
 
 
-    def nextAnim(self, obj):
-        anim = Animation(x=obj.pos[0]-50, t='in_back', duration=.5)
-        anim &=Animation(opacity=obj.opacity+0.33, t='linear', duration=.5)
-        # anim &=Animation(y=obj.pos[1]+5, t='in_back', duration=.5)
-        #anim &=Animation(size=(obj.size[0]+5,obj.size[1]+5), t='in_back', duration=.5)
-        anim.start(obj)
 
-    def update(self, dt):
-        for i in self.ids:
-            print i
+
 
 
 
@@ -177,7 +199,6 @@ class windowWidget(Widget):
 class GfxApp(App):
     def build(self):
         gWindow = windowWidget()
-        Clock.schedule_interval(gWindow.update, 1)
         return gWindow
 
 
