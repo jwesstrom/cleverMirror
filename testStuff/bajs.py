@@ -1,8 +1,25 @@
-from itertools import cycle
+import random
+kkk = {}
+b = ['d','c','b','a']
 
-lst = ['a', 'b', 'c']
 
-lst.pop()
-lst.insert(0,'t')
+for i in range(len(b)):
+    tempDict = {b[i]:random.randint(1, 1350)}
+    kkk.update(tempDict)
 
-print lst
+
+
+a = kkk['a']
+tempList = []
+tempDict = {}
+for i in kkk:
+    tempDict = {i:kkk[i]}
+    tempList.append(tempDict)
+
+
+b = sorted(tempList)
+print b
+#
+# for i in b:
+#     for key, value in i.iteritems():
+#         print value

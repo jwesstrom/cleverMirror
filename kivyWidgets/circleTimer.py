@@ -1,6 +1,6 @@
 #add Clock.schedule_interval(self.update, 1/60) to the widgets themselves
 #comment everything
-
+# change from custom variables, to kivy variables, ex pos=self.pos
 
 
 from kivy.app import App
