@@ -2,115 +2,95 @@
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.clock import Clock
-from kivy.graphics import Color, Ellipse, Rectangle
+from kivy.graphics import Color, Ellipse, Rectangle, Line
 from kivy.uix.image import Image
 from kivy.properties import (NumericProperty, BooleanProperty)
 from kivy.properties import ObjectProperty
 from kivy.properties import StringProperty
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+import random
+from kivy.graphics import Mesh
+from kivy.graphics.texture import Texture
+from kivy.uix.effectwidget import EffectWidget, EffectBase
+
+from kivy.uix.effectwidget import (MonochromeEffect,
+                                   InvertEffect,
+                                   ScanlinesEffect,
+                                   ChannelMixEffect,
+                                   ScanlinesEffect,
+                                   FXAAEffect,
+                                   PixelateEffect,
+                                   HorizontalBlurEffect,
+                                   VerticalBlurEffect)
 
 class weatherWidget(Widget):
 
     def __init__(self, **kwargs):
         super(weatherWidget, self).__init__(**kwargs)
         temperature = '25°'
-        #path = 'graphics/renders/cloud1Test_0001.png'
-        path = 'graphics/renders/cloud1Test.zip'
+        path = 'graphics/renders/cloud1Test_0001.png'
+        #path = 'graphics/renders/cloud1Test.zip'
         #self.add_widget(Image(source=path,anim_delay=1/25, pos=(400,250), size=(150,150)))
+        # self.pos = (250,250)
+        # self.size = (150,150)
         self.add_widget(Image(source=path,anim_delay=1/25, pos=self.pos, size=(self.size[0]+50,self.size[0]+50)))
         self.add_widget(Label(text='[font=Roboto-Thin]'+temperature+'[/font]', font_size='100sp', markup = True, pos=(self.pos[0]+100,self.pos[1])))
 
-
-
-
-
-
-
-class windowWidget(Widget):
-    def __init__(self, **kwargs):
-        super(windowWidget, self).__init__(**kwargs)
-        self.timerTrigger = ''
-        self.trigger = 3
-        self.timerList = []
-        self.idDict = {}
-        x = 30
-        y = 350
-        pos = [30,350,30]
-        op = 1.0
-        sizeWH = 100
-        for i in range(4):
-            x = 100 + (250*i)
-            y = 350
-            if i == 3:
-                op = 0.0
+        vertices = []
+        indices = []
+        for i in range(20):
+            if i == 0:
+                y = 100
+            elif i == 19:
+                y = 100
             else:
-                op = 1.0 - (0.33*i)
-            #
-            # if i == 3:
-            #     print x
-            #     print y
-            #     print sizeWH
-            self.add_widget(weatherWidget(pos=(x,y), id='c'+str(i), opacity=op,))
+                y = 200+random.randint(1,3)
+
+            x = (10*i) + (50)
+
+            vertices.extend([x, y, 0, 0])
+            indices.append(i)
+
+            #‘points’, ‘line_strip’, ‘line_loop’, ‘lines’, ‘triangles’, ‘triangle_strip’ or ‘triangle_fan’
+
+            # create a 64x64 texture, defaults to rgb / ubyte
+            texture = Texture.create(size=(64, 64))
+
+            # create 64x64 rgb tab, and fill with values from 0 to 255
+            # we'll have a gradient from black to white
+            size = 64 * 64 * 3
+            buf = [int(x * 255 / size) for x in range(size)]
+
+            # then, convert the array to a ubyte string
+            buf = b''.join(map(chr, buf))
+
+            # then blit the buffer
+            texture.blit_buffer(buf, colorfmt='rgb', bufferfmt='ubyte')
+
+            # that's all ! you can use it in your graphics now :)
+            # if self is a widget, you can do this
+
+        with self.canvas:
+            Mesh(vertices=vertices, indices=indices, mode='triangle_fan')
+            #Line(points=[100, 100, 200, 100, 100, 200], width=10)
+            Rectangle(texture=texture, pos=self.pos, size=(64, 64))
 
 
-
-
-    def update(self,dt):
-        posDict = {}
-        tempDict = {}
-        tempList = []
-        for i in self.children:
-            tempDict = {i.pos[0]:i}
-            tempList.append(tempDict)
-        b = sorted(tempList)
-        for i in b:
-            print i
-    #     self.outAnim(b[0].key)
-    #     Clock.schedule_once(partial(self.nextAnim, b[1]), 0.2)
-    #     Clock.schedule_once(partial(self.circulate, b[2]), 0.4)
-    #     Clock.schedule_once(partial(self.circulate, i), 0.6)
-    #
-    #
-    #
-    # def outAnim(self, obj, *args):
-    #     # Animation.cancel_all(self)
-    #
-    #     anim = Animation(x=obj.pos[0]-100, t='in_back', duration=.3)
-    #     anim &=Animation(opacity=0.0, t='in_back', duration=.3)
-    #     anim.bind(on_complete=self.newTimeTrigger)
-    #     anim.start(obj)
-    #
-    #
-    # def nextAnim(self, obj):
-    #     anim = Animation(x=obj.pos[0]-50, t='in_out_back', duration=.3)
-    #     anim &=Animation(opacity=obj.opacity+0.33, t='linear', duration=.3)
-    #     # anim &=Animation(y=obj.pos[1]+5, t='in_back', duration=.5)
-    #     #anim &=Animation(size=(obj.size[0]+5,obj.size[1]+5), t='in_back', duration=.5)
-    #     anim.start(obj)
-    #
-    #
-    #
-    #
-
-
-
-
-
-
-
-
-
-
-
-
-
+class fxTest(EffectWidget):
+    def __init__(self, **kwargs):
+        super(fxTest, self).__init__(**kwargs)
+        #effects = [InvertEffect(), HorizontalBlurEffect(size=2.0)]
+        self.add_widget(weatherWidget(pos=(250,250),size=(150,150)))
+        #self.add_widget(Label(text='asd'))
+        #self.effects = [HorizontalBlurEffect(size=10.0)]
+        self.effects = [HorizontalBlurEffect(size=50.0),VerticalBlurEffect(size=50.0)]
 
 class GfxApp(App):
     def build(self):
-        gWindow = windowWidget()
+        gWindow = fxTest()
         #gWindow = weatherWidget()
-        Clock.schedule_interval(gWindow.update, 5)
+        #Clock.schedule_interval(gWindow.update, 5)
         return gWindow
 
 

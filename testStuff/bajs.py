@@ -1,25 +1,23 @@
+from math import cos, sin, pi
 import random
-kkk = {}
-b = ['d','c','b','a']
-
-
-for i in range(len(b)):
-    tempDict = {b[i]:random.randint(1, 1350)}
-    kkk.update(tempDict)
 
 
 
-a = kkk['a']
-tempList = []
-tempDict = {}
-for i in kkk:
-    tempDict = {i:kkk[i]}
-    tempList.append(tempDict)
+# vertices = []
+# indices = []
+# step = 10
+# istep = (pi * 2) / float(step)
+# for i in range(step):
+#     x = 300 + cos(istep * i) * 100
+#     y = 300 + sin(istep * i) * 100
+#     vertices.extend([x, y, 0, 0])
+#     indices.append(i)
 
-
-b = sorted(tempList)
-print b
-#
-# for i in b:
-#     for key, value in i.iteritems():
-#         print value
+vertices = []
+indices = []
+for i in range(20):
+    x = 10*i
+    y = 200+random.randint(1,30)
+    vertices.extend([x, y, 0, 0])
+    indices.append(i)
+    print x
